@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  <link href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/npm/fancybox@3.0.0/dist/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="整理两个Python工具 仅供自己使用  Log封装工具1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整理两个python工具">
+<meta property="og:url" content="https://herosyly.github.io/2024/01/01/整理两个python工具/index.html">
+<meta property="og:site_name" content="Yly&#39;World">
+<meta property="og:description" content="整理两个Python工具 仅供自己使用  Log封装工具1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2024-12-31T14:43:30.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="整理两个python工具">
+<meta name="twitter:description" content="整理两个Python工具 仅供自己使用  Log封装工具1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909">
+
+
+
+
+
+
+  <link rel="canonical" href="https://herosyly.github.io/2024/01/01/整理两个python工具/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>整理两个python工具 | Yly'World</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yly'World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://herosyly.github.io/2024/01/01/整理两个python工具/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yly">
+      <meta itemprop="description" content="Just do it!">
+      <meta itemprop="image" content="/images/bad-apple.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yly'World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">整理两个python工具
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2024-01-01 11:13:11" itemprop="dateCreated datePublished" datetime="2024-01-01T11:13:11+08:00">2024-01-01</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">44k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">40 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="整理两个Python工具"><a href="#整理两个Python工具" class="headerlink" title="整理两个Python工具"></a>整理两个Python工具</h1><blockquote>
+<p>仅供自己使用</p>
+</blockquote>
+<h2 id="Log封装工具"><a href="#Log封装工具" class="headerlink" title="Log封装工具"></a>Log封装工具</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> datetime, re</span><br><span class="line"><span class="keyword">import</span> time, random</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> TimedRotatingFileHandler, BaseRotatingHandler</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多进程或者多线程日志模块</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    codecs = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 支持多进程的TimeRotatingFileHandler</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiProcessHandler</span><span class="params">(logging.FileHandler)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, when=<span class="string">'D'</span>, backupCount=<span class="number">0</span>, encoding=<span class="string">'utf-8'</span>, delay=False, log_path=<span class="string">'logs'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        filename 日志文件名,when 时间间隔的单位,backupCount 保留文件个数</span></span><br><span class="line"><span class="string">        delay 是否开启 OutSteam缓存</span></span><br><span class="line"><span class="string">        True 表示开启缓存,OutStream输出到缓存,待缓存区满后,刷新缓存区,并输出缓存数据到文件。</span></span><br><span class="line"><span class="string">        False表示不缓存,OutStrea直接输出到文件</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.prefix = filename</span><br><span class="line">        self.backupCount = backupCount</span><br><span class="line">        self.when = when.upper()</span><br><span class="line">        <span class="comment"># 正则匹配 年-月-日</span></span><br><span class="line">        <span class="comment"># 正则写到这里就对了</span></span><br><span class="line">        self.extMath = <span class="string">r"^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;"</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># S 每秒建立一个新文件</span></span><br><span class="line">        <span class="comment"># M 每分钟建立一个新文件</span></span><br><span class="line">        <span class="comment"># H 每天建立一个新文件</span></span><br><span class="line">        <span class="comment"># D 每天建立一个新文件</span></span><br><span class="line">        self.when_dict = &#123;</span><br><span class="line">            <span class="string">'S'</span>: <span class="string">"%Y-%m-%d-%H-%M-%S"</span>,</span><br><span class="line">            <span class="string">'M'</span>: <span class="string">"%Y-%m-%d-%H-%M"</span>,</span><br><span class="line">            <span class="string">'H'</span>: <span class="string">"%Y-%m-%d-%H"</span>,</span><br><span class="line">            <span class="string">'D'</span>: <span class="string">"%Y-%m-%d"</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 日志文件日期后缀</span></span><br><span class="line">        self.suffix = self.when_dict.get(when)</span><br><span class="line">        <span class="comment"># 源码中self.extMath写在这里</span></span><br><span class="line">        <span class="comment"># 这个正则匹配不应该写到这里,不然非D模式下 会造成 self.extMath属性不存在的问题</span></span><br><span class="line">        <span class="comment"># 不管是什么模式都是按照这个正则来搜索日志文件的。</span></span><br><span class="line">        <span class="comment"># if self.when == 'D':</span></span><br><span class="line">        <span class="comment">#    正则匹配 年-月-日</span></span><br><span class="line">        <span class="comment">#    self.extMath = r"^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;"</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.suffix:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">u"指定的日期间隔单位无效: %s"</span> % self.when)</span><br><span class="line">        <span class="comment"># 拼接文件路径 格式化字符串</span></span><br><span class="line">        self.filefmt = os.path.join(log_path, <span class="string">"%s.%s.log"</span> % (self.prefix, self.suffix))</span><br><span class="line">        <span class="comment"># 使用当前时间,格式化文件格式化字符串</span></span><br><span class="line">        self.filePath = datetime.datetime.now().strftime(self.filefmt)</span><br><span class="line">        <span class="comment"># 获得文件夹路径</span></span><br><span class="line">        _dir = os.path.dirname(self.filefmt)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># 如果日志文件夹不存在,则创建文件夹</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(_dir):</span><br><span class="line">                os.makedirs(_dir)</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            print(<span class="string">u"创建文件夹失败"</span>)</span><br><span class="line">            print(<span class="string">u"文件夹路径："</span> + self.filePath)</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">if</span> codecs <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            encoding = <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># 调用FileHandler</span></span><br><span class="line">        logging.FileHandler.__init__(self, self.filePath, <span class="string">'a+'</span>, encoding, delay)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shouldChangeFileToWrite</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""更改日志写入目的写入文件</span></span><br><span class="line"><span class="string">        return True 表示已更改,False 表示未更改"""</span></span><br><span class="line">        <span class="comment"># 以当前时间获得新日志文件路径</span></span><br><span class="line">        _filePath = datetime.datetime.now().strftime(self.filefmt)</span><br><span class="line">        <span class="comment"># 新日志文件日期 不等于 旧日志文件日期,则表示 已经到了日志切分的时候</span></span><br><span class="line">        <span class="comment">#   更换日志写入目的为新日志文件。</span></span><br><span class="line">        <span class="comment"># 例如 按 天 （D）来切分日志</span></span><br><span class="line">        <span class="comment">#   当前新日志日期等于旧日志日期,则表示在同一天内,还不到日志切分的时候</span></span><br><span class="line">        <span class="comment">#   当前新日志日期不等于旧日志日期,则表示不在</span></span><br><span class="line">        <span class="comment"># 同一天内,进行日志切分,将日志内容写入新日志内。</span></span><br><span class="line">        <span class="keyword">if</span> _filePath != self.filePath:</span><br><span class="line">            self.filePath = _filePath</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">doChangeFile</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""输出信息到日志文件,并删除多于保留个数的所有日志文件"""</span></span><br><span class="line">        <span class="comment"># 日志文件的绝对路径</span></span><br><span class="line">        self.baseFilename = os.path.abspath(self.filePath)</span><br><span class="line">        <span class="comment"># stream == OutStream</span></span><br><span class="line">        <span class="comment"># stream is not None 表示 OutStream中还有未输出完的缓存数据</span></span><br><span class="line">        <span class="keyword">if</span> self.stream:</span><br><span class="line">            <span class="comment"># self.stream.flush()</span></span><br><span class="line">            <span class="comment"># flush close 都会刷新缓冲区，flush不会关闭stream，close则关闭stream</span></span><br><span class="line">            self.stream.close()</span><br><span class="line">            <span class="comment"># 关闭stream后必须重新设置stream为None，否则会造成对已关闭文件进行IO操作。</span></span><br><span class="line">            self.stream = <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># delay 为False 表示 不OutStream不缓存数据 直接输出</span></span><br><span class="line">        <span class="comment">#   所有,只需要关闭OutStream即可</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.delay:</span><br><span class="line">            <span class="comment"># 这个地方如果关闭colse那么就会造成进程往已关闭的文件中写数据，从而造成IO错误</span></span><br><span class="line">            <span class="comment"># delay == False 表示的就是 不缓存直接写入磁盘</span></span><br><span class="line">            <span class="comment"># self.stream.close()</span></span><br><span class="line">            <span class="comment"># 我们需要重新在打开一次stream</span></span><br><span class="line">            self.stream = self._open()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 删除多于保留个数的所有日志文件</span></span><br><span class="line">        <span class="keyword">if</span> self.backupCount &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> self.getFilesToDelete():</span><br><span class="line">                os.remove(s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getFilesToDelete</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""获得过期需要删除的日志文件"""</span></span><br><span class="line">        <span class="comment"># 分离出日志文件夹绝对路径</span></span><br><span class="line">        <span class="comment"># split返回一个元组（absFilePath,fileName)</span></span><br><span class="line">        <span class="comment"># 例如：split('I:\ScripPython\char4\mybook\util\logs\mylog.2017-03-19）</span></span><br><span class="line">        <span class="comment"># 返回（I:\ScripPython\char4\mybook\util\logs, mylog.2017-03-19）</span></span><br><span class="line">        <span class="comment"># _ 表示占位符,没什么实际意义,</span></span><br><span class="line">        dirName, _ = os.path.split(self.baseFilename)</span><br><span class="line">        fileNames = os.listdir(dirName)</span><br><span class="line">        result = []</span><br><span class="line">        <span class="comment"># self.prefix 为日志文件名 列如：mylog.2017-03-19 中的 mylog</span></span><br><span class="line">        <span class="comment"># 加上 点号 . 方便获取点号后面的日期</span></span><br><span class="line">        prefix = self.prefix + <span class="string">'.'</span></span><br><span class="line">        plen = len(prefix)</span><br><span class="line">        <span class="keyword">for</span> fileName <span class="keyword">in</span> fileNames:</span><br><span class="line">            <span class="keyword">if</span> fileName[:plen] == prefix:</span><br><span class="line">                <span class="comment"># 日期后缀 mylog.2017-03-19 中的 2017-03-19</span></span><br><span class="line">                suffix = fileName[plen:]</span><br><span class="line">                <span class="comment"># 匹配符合规则的日志文件,添加到result列表中</span></span><br><span class="line">                <span class="keyword">if</span> re.compile(self.extMath).match(suffix):</span><br><span class="line">                    result.append(os.path.join(dirName, fileName))</span><br><span class="line">        result.sort()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回  待删除的日志文件</span></span><br><span class="line">        <span class="comment">#   多于 保留文件个数 backupCount的所有前面的日志文件。</span></span><br><span class="line">        <span class="keyword">if</span> len(result) &lt; self.backupCount:</span><br><span class="line">            result = []</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result = result[:len(result) - self.backupCount]</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">emit</span><span class="params">(self, record)</span>:</span></span><br><span class="line">        <span class="string">"""发送一个日志记录</span></span><br><span class="line"><span class="string">        覆盖FileHandler中的emit方法,logging会自动调用此方法"""</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> self.shouldChangeFileToWrite():</span><br><span class="line">                self.doChangeFile()</span><br><span class="line">            logging.FileHandler.emit(self, record)</span><br><span class="line">        <span class="keyword">except</span> (KeyboardInterrupt, SystemExit):</span><br><span class="line">            <span class="keyword">raise</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            self.handleError(record)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTimedRotatingFileHandler</span><span class="params">(TimedRotatingFileHandler)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, when=<span class="string">'d'</span>, interval=<span class="number">1</span>, backupCount=<span class="number">0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                 encoding=None, delay=False, utc=False, atTime=None,</span></span></span><br><span class="line"><span class="function"><span class="params">                 errors=None)</span>:</span></span><br><span class="line">        super().__init__(filename=filename, when=when, interval=interval, backupCount=backupCount,</span><br><span class="line">                         encoding=encoding, delay=delay, utc=utc, atTime=atTime, errors=errors)</span><br><span class="line"></span><br><span class="line">        filename = self.baseFilename</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(filename):</span><br><span class="line">            t = os.stat(filename).st_ctime</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            t = int(time.time())</span><br><span class="line">        self.rolloverAt = self.computeRollover(t)</span><br><span class="line">        <span class="comment"># rolloverAtFmt = datetime.datetime.fromtimestamp(self.rolloverAt).strftime('%Y-%m-%d %H:%M:%S')</span></span><br><span class="line">        <span class="comment"># print(f'log rolloverAt ===&gt; &#123;self.rolloverAt&#125; rolloverAtFmt ===&gt; &#123;rolloverAtFmt&#125;')</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DailyRotatingFileHandler</span><span class="params">(BaseRotatingHandler)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    同`logging.TimedRotatingFileHandler`类似，不过这个handler：</span></span><br><span class="line"><span class="string">    - 可以支持多进程</span></span><br><span class="line"><span class="string">    - 只支持自然日分割</span></span><br><span class="line"><span class="string">    - 暂不支持UTC</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename, backupCount=<span class="number">0</span>, encoding=None, delay=False, utc=False, log_path=<span class="string">'logs'</span>, **kwargs)</span>:</span></span><br><span class="line">        self.backup_count = backupCount</span><br><span class="line">        self.utc = utc</span><br><span class="line">        self.suffix = <span class="string">"%Y-%m-%d"</span></span><br><span class="line">        self.base_log_path = Path(os.path.join(log_path, filename))</span><br><span class="line">        self.base_filename = self.base_log_path.name</span><br><span class="line">        self.current_filename = self._compute_fn()</span><br><span class="line">        self.current_log_path = self.base_log_path.with_name(self.current_filename)</span><br><span class="line">        BaseRotatingHandler.__init__(self, filename, <span class="string">'a'</span>, encoding, delay)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shouldRollover</span><span class="params">(self, record)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        判断是否该滚动日志，如果当前时间对应的日志文件名与当前打开的日志文件名不一致，则需要滚动日志</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> self.current_filename != self._compute_fn():</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">doRollover</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        滚动日志</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 关闭旧的日志文件</span></span><br><span class="line">        <span class="keyword">if</span> self.stream:</span><br><span class="line">            self.stream.close()</span><br><span class="line">            self.stream = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 计算新的日志文件</span></span><br><span class="line">        self.current_filename = self._compute_fn()</span><br><span class="line">        self.current_log_path = self.base_log_path.with_name(self.current_filename)</span><br><span class="line">        <span class="comment"># 打开新的日志文件</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.delay:</span><br><span class="line">            self.stream = self._open()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 删除过期日志</span></span><br><span class="line">        self.delete_expired_files()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_compute_fn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        计算当前时间对应的日志文件名</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.base_filename + <span class="string">"."</span> + time.strftime(self.suffix, time.localtime())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_open</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        打开新的日志文件，同时更新base_filename指向的软链，修改软链不会对日志记录产生任何影响</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> self.encoding <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            stream = open(str(self.current_log_path), self.mode)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            stream = codecs.open(str(self.current_log_path), self.mode, self.encoding)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 删除旧的软链</span></span><br><span class="line">        <span class="keyword">if</span> self.base_log_path.exists():</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="comment"># 如果base_log_path不是软链或者指向的日志文件不对，则先删除该软链</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self.base_log_path.is_symlink() <span class="keyword">or</span> os.readlink(self.base_log_path) != self.current_filename:</span><br><span class="line">                    os.remove(self.base_log_path)</span><br><span class="line">            <span class="keyword">except</span> OSError:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 建立新的软链</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            os.symlink(self.current_filename, str(self.base_log_path))</span><br><span class="line">        <span class="keyword">except</span> OSError:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> stream</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_expired_files</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        删除过期的日志</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> self.backup_count &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        file_names = os.listdir(str(self.base_log_path.parent))</span><br><span class="line">        result = []</span><br><span class="line">        prefix = self.base_filename + <span class="string">"."</span></span><br><span class="line">        plen = len(prefix)</span><br><span class="line">        <span class="keyword">for</span> file_name <span class="keyword">in</span> file_names:</span><br><span class="line">            <span class="keyword">if</span> file_name[:plen] == prefix:</span><br><span class="line">                suffix = file_name[plen:]</span><br><span class="line">                <span class="keyword">if</span> re.match(<span class="string">r"^\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;(\.\w+)?$"</span>, suffix):</span><br><span class="line">                    result.append(file_name)</span><br><span class="line">        <span class="keyword">if</span> len(result) &lt; self.backup_count:</span><br><span class="line">            result = []</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.sort()</span><br><span class="line">            result = result[:len(result) - self.backup_count]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> file_name <span class="keyword">in</span> result:</span><br><span class="line">            os.remove(str(self.base_log_path.with_name(file_name)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogPrint</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">info</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">error</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">debug</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printErrorLog</span><span class="params">(self, e)</span>:</span></span><br><span class="line">        print(<span class="string">"Error Info: "</span> + str(e))</span><br><span class="line">        print(<span class="string">"Error File: "</span> + str(e.__traceback__.tb_frame.f_globals[<span class="string">"__file__"</span>]))</span><br><span class="line">        print(<span class="string">"Error Row: "</span> + str(e.__traceback__.tb_lineno))</span><br><span class="line">        print(e.args)</span><br><span class="line">        print(<span class="string">'Error Traceback:\n%s'</span> % traceback.format_exc())</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogTool</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, log_name=<span class="string">'info'</span>, name=<span class="string">''</span>, log_path=<span class="string">'logs'</span>, path=<span class="string">''</span>, randFlag=False)</span>:</span></span><br><span class="line">        self.LOG_FORMAT = <span class="string">"%(asctime)s - %(levelname)s - %(message)s"</span></span><br><span class="line">        self.DATE_FORMAT = <span class="string">"%Y-%m-%d %H:%M:%S %a"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> name:</span><br><span class="line">            log_name = name</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> path:</span><br><span class="line">            log_path = path</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> randFlag:</span><br><span class="line">            log_name = <span class="string">'&#123;&#125;_&#123;&#125;&#123;&#125;'</span>.format(log_name, int(time.time() * <span class="number">1000</span>), random.randint(<span class="number">100000</span>, <span class="number">999999</span>))</span><br><span class="line"></span><br><span class="line">        self.log_name = log_name</span><br><span class="line">        self.log_path = log_path</span><br><span class="line">        self.log_level = logging.INFO</span><br><span class="line">        self.logger = logging.getLogger(log_name)</span><br><span class="line">        self.logger.root.setLevel(self.log_level)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Windows CMD命令行 字体颜色定义 text colors</span></span><br><span class="line">        self.FOREGROUND_WHIT = <span class="number">0x0f</span></span><br><span class="line">        self.FOREGROUND_GREEN = <span class="number">0xf2</span>  <span class="comment"># green.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常规日志</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_log</span><span class="params">(self, new_log_flag=False)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.log_path):</span><br><span class="line">                os.makedirs(self.log_path)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.logger.handlers:</span><br><span class="line">            formatter = logging.Formatter(fmt=self.LOG_FORMAT, datefmt=self.DATE_FORMAT)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出到console</span></span><br><span class="line">            consoleHandler = logging.StreamHandler()</span><br><span class="line">            consoleHandler.setLevel(self.log_level)</span><br><span class="line">            consoleHandler.setFormatter(formatter)</span><br><span class="line">            self.logger.addHandler(consoleHandler)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 创建 TimedRotatingFileHandler,并设置文件名、滚动间隔和保留日志文件个数</span></span><br><span class="line">            fname = <span class="string">'%s.log'</span> % self.log_name</span><br><span class="line">            logFile = os.path.join(self.log_path, fname)</span><br><span class="line">            <span class="comment"># fileHandler = TimedRotatingFileHandler(filename=logFile,when='d',interval=1,backupCount=3,encoding='utf-8')</span></span><br><span class="line">            <span class="keyword">if</span> new_log_flag:</span><br><span class="line">                fileHandler = MyTimedRotatingFileHandler(filename=logFile, when=<span class="string">'MIDNIGHT'</span>, interval=<span class="number">1</span>, backupCount=<span class="number">3</span>,</span><br><span class="line">                                                         encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                fileHandler = TimedRotatingFileHandler(filename=logFile, when=<span class="string">'MIDNIGHT'</span>, interval=<span class="number">1</span>, backupCount=<span class="number">3</span>,</span><br><span class="line">                                                       encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">            <span class="comment"># MIDNIGHT 按照自然日分割日志</span></span><br><span class="line">            <span class="comment"># fileHandler = TimedRotatingFileHandler(filename=logFile,when='MIDNIGHT',interval=1,backupCount=3,encoding='utf-8')</span></span><br><span class="line">            <span class="comment"># fileHandler.suffix = '%Y-%m-%d.log'</span></span><br><span class="line">            <span class="comment"># fileHandler.encoding = 'utf8'</span></span><br><span class="line">            fileHandler.setLevel(self.log_level)</span><br><span class="line">            fileHandler.setFormatter(formatter)</span><br><span class="line">            self.logger.addHandler(fileHandler)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.logger</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 多进程或者多线程日志</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_multi_process_log</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.log_path):</span><br><span class="line">                os.makedirs(self.log_path)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.logger.handlers:</span><br><span class="line">            formatter = logging.Formatter(fmt=self.LOG_FORMAT, datefmt=self.DATE_FORMAT)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出到console</span></span><br><span class="line">            consoleHandler = logging.StreamHandler()</span><br><span class="line">            consoleHandler.setLevel(self.log_level)</span><br><span class="line">            consoleHandler.setFormatter(formatter)</span><br><span class="line">            self.logger.addHandler(consoleHandler)</span><br><span class="line"></span><br><span class="line">            fileHandler = MultiProcessHandler(self.log_name, <span class="string">'D'</span>, <span class="number">3</span>, log_path=self.log_path)</span><br><span class="line">            fileHandler.setFormatter(formatter)</span><br><span class="line">            fileHandler.setLevel(self.log_level)</span><br><span class="line">            self.logger.addHandler(fileHandler)</span><br><span class="line">        <span class="keyword">return</span> self.logger</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_mpt_log</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.log_path):</span><br><span class="line">                os.makedirs(self.log_path)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.logger.handlers:</span><br><span class="line">            formatter = logging.Formatter(fmt=self.LOG_FORMAT, datefmt=self.DATE_FORMAT)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 输出到console</span></span><br><span class="line">            consoleHandler = logging.StreamHandler()</span><br><span class="line">            consoleHandler.setLevel(self.log_level)</span><br><span class="line">            consoleHandler.setFormatter(formatter)</span><br><span class="line">            self.logger.addHandler(consoleHandler)</span><br><span class="line"></span><br><span class="line">            fileHandler = DailyRotatingFileHandler(self.log_name, <span class="number">3</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">            fileHandler.setFormatter(formatter)</span><br><span class="line">            fileHandler.setLevel(self.log_level)</span><br><span class="line">            self.logger.addHandler(fileHandler)</span><br><span class="line">        <span class="keyword">return</span> self.logger</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close_log</span><span class="params">(self)</span>:</span></span><br><span class="line">        logging.shutdown()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">printErrorLog</span><span class="params">(self, e)</span>:</span></span><br><span class="line">        log = self.init_log()</span><br><span class="line">        log.error(<span class="string">"Error Info: "</span> + str(e))</span><br><span class="line">        log.error(<span class="string">"Error File: "</span> + str(e.__traceback__.tb_frame.f_globals[<span class="string">"__file__"</span>]))</span><br><span class="line">        log.error(<span class="string">"Error Row: "</span> + str(e.__traceback__.tb_lineno))</span><br><span class="line">        log.error(e.args)</span><br><span class="line">        log.error(<span class="string">'Error Traceback:\n%s'</span> % traceback.format_exc())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_cmd_text_color</span><span class="params">(self, color)</span>:</span></span><br><span class="line">        <span class="comment"># 字体颜色定义 ,关键在于颜色编码，由2位十六进制组成，分别取0~f，前一位指的是背景色，后一位指的是字体色</span></span><br><span class="line">        <span class="comment"># 由于该函数的限制，应该是只有这16种，可以前景色与背景色组合。也可以几种颜色通过或运算组合，组合后还是在这16种颜色中</span></span><br><span class="line">        STD_INPUT_HANDLE = <span class="number">-10</span></span><br><span class="line">        STD_OUTPUT_HANDLE = <span class="number">-11</span></span><br><span class="line">        STD_ERROR_HANDLE = <span class="number">-12</span></span><br><span class="line"></span><br><span class="line">        handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)</span><br><span class="line">        Bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)</span><br><span class="line">        <span class="keyword">return</span> Bool</span><br><span class="line"></span><br><span class="line">    <span class="comment"># reset white</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">resetColor</span><span class="params">(self, color)</span>:</span></span><br><span class="line">        self.set_cmd_text_color(color)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sqlInfo</span><span class="params">(self, mess)</span>:</span></span><br><span class="line">        self.resetColor(self.FOREGROUND_GREEN)</span><br><span class="line">        self.init_log().info(str(mess))</span><br><span class="line">        self.resetColor(self.FOREGROUND_WHIT)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_curr_log</span><span class="params">(self)</span>:</span></span><br><span class="line">        app_log = os.path.join(self.log_path, self.log_name)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> os.path.exists(app_log):</span><br><span class="line">            <span class="keyword">return</span> app_log</span><br><span class="line"></span><br><span class="line">        _path = Path(app_log)</span><br><span class="line">        fname = _path.stem</span><br><span class="line">        ext = _path.suffix[<span class="number">1</span>:]</span><br><span class="line">        log_path = _path.parent</span><br><span class="line">        <span class="comment"># hard_link = '_curr_'</span></span><br><span class="line">        hard_link = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">        fmt = datetime.datetime.strftime(datetime.datetime.now(), <span class="string">'%Y-%m-%d'</span>)</span><br><span class="line"></span><br><span class="line">        log_hard_link = <span class="string">'.'</span>.join([fname, hard_link, ext])</span><br><span class="line">        log_name = <span class="string">'.'</span>.join([fname, fmt, ext])</span><br><span class="line"></span><br><span class="line">        self.log_data(log_path=log_path, source=log_name, target=log_hard_link)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> os.path.join(log_path, log_hard_link)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">log_data</span><span class="params">(self, source=<span class="string">''</span>, target=<span class="string">''</span>)</span>:</span></span><br><span class="line">        source_path = os.path.join(self.log_path, source)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(source_path):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        target_path = os.path.join(self.log_path, target)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">            f_stat = os.stat(target_path)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> time.time() - f_stat.st_mtime &gt;= <span class="number">5</span>:</span><br><span class="line">                <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                    os.unlink(target_path)</span><br><span class="line">                    os.link(source_path, target_path)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(target_path):</span><br><span class="line">            os.link(source_path, target_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">file.seek(offset,whence)</span></span><br><span class="line"><span class="string">offset -- 开始的偏移量，也就是代表需要移动偏移的字节数</span></span><br><span class="line"><span class="string">whence：可选，默认值为 0。给offset参数一个定义，表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">file.tell()</span></span><br><span class="line"><span class="string">返回文件的当前位置，即文件指针当前位置</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取日志末尾指定行数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_logs_foot</span><span class="params">(log_path, n, block=<span class="number">-4096</span>, del_space=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(log_path):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    <span class="keyword">with</span> open(log_path, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="comment"># 指针移动到文件末尾</span></span><br><span class="line">        f.seek(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 返回指针当前位置</span></span><br><span class="line">        log_size = f.tell()</span><br><span class="line">        <span class="comment"># print('fileSize: &#123;&#125;'.format(log_size))</span></span><br><span class="line">        <span class="comment"># 如果文件为空则返回空</span></span><br><span class="line">        <span class="keyword">if</span> log_size &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="comment"># 判断offset是否大于文件字节数,是则读取所有行,并返回</span></span><br><span class="line">            <span class="keyword">if</span> log_size &gt;= abs(block):</span><br><span class="line">                <span class="comment"># 将指针移动到倒数的字节数位置</span></span><br><span class="line">                f.seek(block, <span class="number">2</span>)</span><br><span class="line">                <span class="comment"># 读取这个范围的文本</span></span><br><span class="line">                data = f.readlines()</span><br><span class="line">                <span class="comment"># 排除空白字符</span></span><br><span class="line">                <span class="keyword">if</span> del_space:</span><br><span class="line">                    data_t = [t <span class="keyword">for</span> t <span class="keyword">in</span> data[<span class="number">1</span>:] <span class="keyword">if</span> t.strip()]</span><br><span class="line">                    data_t_size = len(data_t)</span><br><span class="line">                    <span class="keyword">if</span> data_t_size &gt; n:</span><br><span class="line">                        <span class="keyword">return</span> data_t[-n:]</span><br><span class="line">                    <span class="keyword">if</span> abs(block) &lt; log_size:</span><br><span class="line">                        block *= <span class="number">2</span></span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">return</span> data_t</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> len(data) &gt; n:</span><br><span class="line">                    <span class="keyword">return</span> data[-n:]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    block *= <span class="number">2</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 将指针移动至文件开头</span></span><br><span class="line">                f.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">                <span class="comment"># 读取这个范围的文本</span></span><br><span class="line">                data = f.readlines()</span><br><span class="line">                <span class="comment"># 排除空白字符</span></span><br><span class="line">                <span class="keyword">if</span> del_space:</span><br><span class="line">                    data_t = [t <span class="keyword">for</span> t <span class="keyword">in</span> data <span class="keyword">if</span> t.strip()]</span><br><span class="line">                    <span class="keyword">return</span> data_t</span><br><span class="line">                <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取日志头部指定行数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_logs_head</span><span class="params">(log_path, n, block=<span class="number">4096</span>, del_space=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(log_path):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    <span class="keyword">with</span> open(log_path, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="comment"># 指针移动到文件末尾</span></span><br><span class="line">        f.seek(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        <span class="comment"># 返回指针当前位置</span></span><br><span class="line">        log_size = f.tell()</span><br><span class="line">        <span class="comment"># print('fileSize: &#123;&#125;'.format(log_size))</span></span><br><span class="line">        <span class="comment"># 如果文件为空则返回空</span></span><br><span class="line">        <span class="keyword">if</span> log_size &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将指针移动到文件开头</span></span><br><span class="line">        f.seek(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        data = []</span><br><span class="line">        data_t = []</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">if</span> f.tell() &gt;= log_size:</span><br><span class="line">                <span class="keyword">if</span> del_space:</span><br><span class="line">                    <span class="keyword">return</span> data_t</span><br><span class="line">                <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">            data.append(f.readline())</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> len(data) &gt;= n:</span><br><span class="line">                <span class="comment"># 排除空白字符</span></span><br><span class="line">                <span class="keyword">if</span> del_space:</span><br><span class="line">                    data_t = [t <span class="keyword">for</span> t <span class="keyword">in</span> data <span class="keyword">if</span> t.strip()]</span><br><span class="line">                    data_t_size = len(data_t)</span><br><span class="line">                    <span class="keyword">if</span> data_t_size &gt;= n:</span><br><span class="line">                        <span class="keyword">return</span> data_t[:n + <span class="number">1</span>]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_current_log_name</span><span class="params">(log_path)</span>:</span></span><br><span class="line">    _path = Path(log_path)</span><br><span class="line">    fname = _path.stem</span><br><span class="line">    ext = _path.suffix[<span class="number">1</span>:]</span><br><span class="line">    log_path = _path.parent</span><br><span class="line">    hard_link = <span class="string">'_curr_'</span></span><br><span class="line">    <span class="comment"># hard_link = ''</span></span><br><span class="line">    fmt = datetime.datetime.strftime(datetime.datetime.now(), <span class="string">'%Y-%m-%d'</span>)</span><br><span class="line">    log_hard_link = <span class="string">'.'</span>.join([fname,hard_link,ext])</span><br><span class="line">    <span class="comment">#log_hard_link = '.'.join([fname, ext])</span></span><br><span class="line">    log_name1 = <span class="string">'.'</span>.join([fname, ext, fmt])</span><br><span class="line">    log_name2 = <span class="string">'.'</span>.join([fname, ext])</span><br><span class="line">    log_name3 = <span class="string">'.'</span>.join([fname, fmt, ext])</span><br><span class="line">    source_path1 = os.path.join(log_path, log_name1)</span><br><span class="line">    source_path2 = os.path.join(log_path, log_name2)</span><br><span class="line">    source_path3 = os.path.join(log_path, log_name3)</span><br><span class="line">    target_path = os.path.join(log_path, log_hard_link)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        flag1 = <span class="keyword">False</span></span><br><span class="line">        flag2 = <span class="keyword">False</span></span><br><span class="line">        flag3 = <span class="keyword">False</span></span><br><span class="line">        sz_arr = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> os.path.exists(source_path1):</span><br><span class="line">            sz_arr[<span class="number">0</span>] = os.path.getsize(source_path1)</span><br><span class="line">            flag1 = <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> os.path.exists(source_path2):</span><br><span class="line">            sz_arr[<span class="number">1</span>] = os.path.getsize(source_path2)</span><br><span class="line">            flag2 = <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> os.path.exists(source_path3):</span><br><span class="line">            sz_arr[<span class="number">2</span>] = os.path.getsize(source_path3)</span><br><span class="line">            flag3 = <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        sz_max = sz_arr[<span class="number">0</span>]</span><br><span class="line">        sz_i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(sz_arr)):</span><br><span class="line">            <span class="keyword">if</span> sz_arr[i] &gt; sz_max:</span><br><span class="line">                sz_max = sz_arr[i]</span><br><span class="line">                sz_i = i</span><br><span class="line">        <span class="keyword">if</span> sz_i == <span class="number">0</span>:</span><br><span class="line">            flag1 = <span class="keyword">True</span></span><br><span class="line">            flag2 = <span class="keyword">False</span></span><br><span class="line">            flag3 = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">elif</span> sz_i == <span class="number">1</span>:</span><br><span class="line">            flag1 = <span class="keyword">False</span></span><br><span class="line">            flag2 = <span class="keyword">True</span></span><br><span class="line">            flag3 = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">elif</span> sz_i == <span class="number">2</span>:</span><br><span class="line">            flag1 = <span class="keyword">False</span></span><br><span class="line">            flag2 = <span class="keyword">False</span></span><br><span class="line">            flag3 = <span class="keyword">True</span></span><br><span class="line">        <span class="comment">#print('sp1_sz: &#123;&#125; sp2_sz: &#123;&#125;'.format(sp1_sz, sp2_sz))</span></span><br><span class="line">        <span class="comment">#print('flag1: &#123;&#125; flag2: &#123;&#125;'.format(flag1, flag2))</span></span><br><span class="line">        <span class="comment">#print('sp1: &#123;&#125; sp2: &#123;&#125;'.format(source_path1, source_path2))</span></span><br><span class="line">        <span class="comment">#print('flag1: &#123;&#125; flag2: &#123;&#125; flag3: &#123;&#125;'.format(flag1,flag2,flag3))</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> flag2 <span class="keyword">and</span> os.path.exists(source_path2):</span><br><span class="line">            <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                f_stat = os.stat(target_path)</span><br><span class="line">                <span class="keyword">if</span> time.time() - f_stat.st_mtime &gt;= <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                        os.unlink(target_path)</span><br><span class="line">                        os.link(source_path2, target_path)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(target_path):</span><br><span class="line">                os.link(source_path2, target_path)</span><br><span class="line">        <span class="keyword">elif</span> flag1 <span class="keyword">and</span> os.path.exists(source_path1):</span><br><span class="line">            <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                f_stat = os.stat(target_path)</span><br><span class="line">                <span class="keyword">if</span> time.time() - f_stat.st_mtime &gt;= <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                        os.unlink(target_path)</span><br><span class="line">                        os.link(source_path1, target_path)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(target_path):</span><br><span class="line">                os.link(source_path1, target_path)</span><br><span class="line">        <span class="keyword">elif</span> flag3 <span class="keyword">and</span> os.path.exists(source_path3):</span><br><span class="line">            <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                f_stat = os.stat(target_path)</span><br><span class="line">                <span class="keyword">if</span> time.time() - f_stat.st_mtime &gt;= <span class="number">5</span>:</span><br><span class="line">                    <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">                        os.unlink(target_path)</span><br><span class="line">                        os.link(source_path3, target_path)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(target_path):</span><br><span class="line">                os.link(source_path3, target_path)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> target_path</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printErrorLog</span><span class="params">(e, log=None)</span>:</span></span><br><span class="line">    show = <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">if</span> log:</span><br><span class="line">        show = log</span><br><span class="line">    show(<span class="string">"Error Info: "</span> + str(e))</span><br><span class="line">    show(<span class="string">"Error File: "</span> + str(e.__traceback__.tb_frame.f_globals[<span class="string">"__file__"</span>]))</span><br><span class="line">    show(<span class="string">"Error Row: "</span> + str(e.__traceback__.tb_lineno))</span><br><span class="line">    show(e.args)</span><br><span class="line">    show(<span class="string">'Error Traceback:\n%s'</span> % traceback.format_exc())</span><br></pre></td></tr></table></figure>
+<p>多线程或者多进程工具</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> queue <span class="keyword">import</span> Queue, LifoQueue</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Event, Thread</span><br><span class="line"><span class="keyword">from</span> multiprocessing.managers <span class="keyword">import</span> BaseManager, SyncManager</span><br><span class="line"><span class="keyword">from</span> multiprocessing.pool <span class="keyword">import</span> ThreadPool</span><br><span class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</span><br><span class="line"><span class="keyword">import</span> multiprocessing.dummy <span class="keyword">as</span> mp_dummy</span><br><span class="line"><span class="keyword">import</span> traceback</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, ProcessPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一般如果是计算型任务，线程池的大小设置为cpu_num+1个，如果是IO型任务，设置为2*cpu_num+1个线程</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyManager</span><span class="params">(BaseManager)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">MyManager.register(<span class="string">'Event'</span>, Event)</span><br><span class="line">MyManager.register(<span class="string">'Queue'</span>, LifoQueue)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printErrorLog</span><span class="params">(e, log=None)</span>:</span></span><br><span class="line">    show = <span class="keyword">print</span></span><br><span class="line">    <span class="keyword">if</span> log:</span><br><span class="line">        show = log</span><br><span class="line">    show(<span class="string">"Error Info: "</span> + str(e))</span><br><span class="line">    show(<span class="string">"Error File: "</span> + str(e.__traceback__.tb_frame.f_globals[<span class="string">"__file__"</span>]))</span><br><span class="line">    show(<span class="string">"Error Row: "</span> + str(e.__traceback__.tb_lineno))</span><br><span class="line">    show(e.args)</span><br><span class="line">    show(<span class="string">'Error Traceback:\n%s'</span> % traceback.format_exc())</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogPrint</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">info</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">error</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">debug</span><span class="params">(self, msg)</span>:</span></span><br><span class="line">        print(msg)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_process</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'win32'</span> == sys.platform:</span><br><span class="line">        print(<span class="string">'...freeze_support...'</span>)</span><br><span class="line">        mp.freeze_support()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 多进程或者多线程主程序</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiProcessTask</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, pool_count=os.cpu_count<span class="params">()</span>, log=None, app_queue_res_count=<span class="number">1</span>, \</span></span></span><br><span class="line"><span class="function"><span class="params">        lifo_flag=False, thread_flag=True, result_flag=False, app_name=<span class="string">'MultiProcessTask'</span>, \</span></span></span><br><span class="line"><span class="function"><span class="params">            app_func=None, show_log_flag=True, app_queue_req_max_size=<span class="number">0</span>, \</span></span></span><br><span class="line"><span class="function"><span class="params">            app_queue_res_max_size=<span class="number">0</span>, app_exec_timeout=None, new_impl=False, \</span></span></span><br><span class="line"><span class="function"><span class="params">            result_max_cache_size=None)</span>:</span></span><br><span class="line">        <span class="comment"># 定义日志</span></span><br><span class="line">        self.log : logging = log</span><br><span class="line">        <span class="keyword">if</span> log == <span class="keyword">None</span>:</span><br><span class="line">            self.log = LogPrint()</span><br><span class="line">        <span class="keyword">if</span> pool_count == <span class="keyword">None</span>:</span><br><span class="line">            pool_count = os.cpu_count()</span><br><span class="line">        self.show_log_flag : bool = show_log_flag</span><br><span class="line">        <span class="comment"># 定义线程数</span></span><br><span class="line">        self.pool_count = pool_count</span><br><span class="line">        <span class="comment"># 定义应用名字</span></span><br><span class="line">        self.app_name = app_name</span><br><span class="line">        app_manager : SyncManager = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> lifo_flag:</span><br><span class="line">            manager = MyManager()</span><br><span class="line">            manager.start()</span><br><span class="line">            app_manager = manager</span><br><span class="line">            <span class="comment">#self.app_manager = Manager1()</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">elif</span> thread_flag:</span><br><span class="line">            <span class="comment"># 定义多线程管理</span></span><br><span class="line">            app_manager = mp_dummy.Manager()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 定义多进程管理</span></span><br><span class="line">            app_manager = mp.Manager()</span><br><span class="line">        <span class="comment"># 定义事件 用于通知关闭程序</span></span><br><span class="line">        self.app_event : Event = app_manager.Event()</span><br><span class="line">        <span class="comment"># 定义请求队列</span></span><br><span class="line">        self.app_queue_req : Queue = app_manager.Queue(app_queue_req_max_size)</span><br><span class="line">        <span class="comment"># 定义响应队列</span></span><br><span class="line">        self.app_queue_res : Queue = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> result_flag:</span><br><span class="line">            self.app_queue_res = app_manager.Queue(app_queue_res_max_size)</span><br><span class="line">        <span class="comment"># 定义进程池</span></span><br><span class="line">        self.pool : ThreadPool</span><br><span class="line">        <span class="keyword">if</span> thread_flag:</span><br><span class="line">            self.pool = mp_dummy.Pool(self.pool_count)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.pool = mp.Pool(self.pool_count)</span><br><span class="line">        <span class="comment"># 结果存取次数</span></span><br><span class="line">        self.app_queue_res_count = app_queue_res_count</span><br><span class="line">        <span class="comment"># 定义程序执行最大时长</span></span><br><span class="line">        self.app_exec_timeout = app_exec_timeout</span><br><span class="line">        <span class="comment"># 新方法实现</span></span><br><span class="line">        self.new_impl = new_impl</span><br><span class="line">        <span class="comment"># 默认执行方法</span></span><br><span class="line">        self.new_func = <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># 定义执行方法</span></span><br><span class="line">        <span class="keyword">if</span> app_func:</span><br><span class="line">            self.add_func(app_func)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.new_impl:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">'please init app_func!'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.add_func(<span class="keyword">None</span>)</span><br><span class="line">        <span class="comment"># 结果缓存</span></span><br><span class="line">        self.result_cache_dct = &#123;&#125;</span><br><span class="line">        <span class="comment"># 结果ID列表</span></span><br><span class="line">        self.result_cache_id_list = []</span><br><span class="line">        <span class="comment"># 结果最大缓存数量</span></span><br><span class="line">        <span class="comment"># 最大缓存数量 = 线程数量 x 3</span></span><br><span class="line">        <span class="keyword">if</span> result_max_cache_size:</span><br><span class="line">            self.result_max_cache_size = result_max_cache_size</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.result_max_cache_size = self.pool_count * <span class="number">3</span></span><br><span class="line">        <span class="keyword">if</span> thread_flag:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span> threads total: <span class="subst">&#123;self.pool_count&#125;</span> mpt init...'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span> process total: <span class="subst">&#123;self.pool_count&#125;</span> mpt init...'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义异步错误信息</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">err_callback</span><span class="params">(self, err: Exception, app_name=<span class="string">''</span>)</span>:</span></span><br><span class="line">        self.log.error(<span class="string">f'<span class="subst">&#123;app_name&#125;</span> app_func error &gt; <span class="subst">&#123;err&#125;</span>'</span>)</span><br><span class="line">        printErrorLog(err, self.log.error)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化默认执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_new_func</span><span class="params">(self, app_func)</span>:</span></span><br><span class="line">        self.new_func = app_func</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 实现方法传递</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_new_func</span><span class="params">(self, params=&#123;&#125;, app_func=None)</span>:</span></span><br><span class="line">        key = <span class="string">'_app_func'</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> params:</span><br><span class="line">            <span class="keyword">if</span> app_func:</span><br><span class="line">                params[<span class="string">'_app_func'</span>] = app_func</span><br><span class="line">            <span class="keyword">elif</span> self.new_func:</span><br><span class="line">                params[<span class="string">'_app_func'</span>] = self.new_func</span><br><span class="line">        t = int(time.time() * <span class="number">10000000</span>)</span><br><span class="line">        rand = random.randint(<span class="number">1</span>,<span class="number">99999999</span>)</span><br><span class="line">        uk_id = <span class="string">f'<span class="subst">&#123;t&#125;</span><span class="subst">&#123;rand&#125;</span>'</span></span><br><span class="line">        params[<span class="string">'_app_req_id'</span>] = uk_id</span><br><span class="line">        <span class="keyword">return</span> uk_id</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义执行方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_func</span><span class="params">(self, app_func)</span>:</span></span><br><span class="line">        mptf = MultiProcessTaskFunc(</span><br><span class="line">            log = self.log,</span><br><span class="line">            app_name = self.app_name,</span><br><span class="line">            app_event = self.app_event,</span><br><span class="line">            app_queue_req = self.app_queue_req,</span><br><span class="line">            app_queue_res = self.app_queue_res,</span><br><span class="line">            app_queue_res_count = self.app_queue_res_count,</span><br><span class="line">            app_func = app_func,</span><br><span class="line">            show_log_flag = self.show_log_flag,</span><br><span class="line">            app_exec_timeout=self.app_exec_timeout</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.pool_count):</span><br><span class="line">            <span class="keyword">if</span> self.new_impl:</span><br><span class="line">                self.pool.apply_async(func=mptf.init_method,error_callback=self.err_callback)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.pool.apply_async(func=mptf.init_method_old,error_callback=self.err_callback)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待执行完成,并且释放资源</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self, forceFlag=False)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> forceFlag:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.app_queue_req.empty():</span><br><span class="line">                self.app_queue_req.join()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.app_event.is_set():</span><br><span class="line">            self.app_event.set()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.pool_count):</span><br><span class="line">                self.app_queue_req.put(<span class="keyword">None</span>)</span><br><span class="line">            </span><br><span class="line">            self.pool.close()</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> forceFlag:</span><br><span class="line">                self.pool.join()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送请求并拿到数据</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendReqAndReceiveRes</span><span class="params">(self, params=&#123;&#125;, timeout=<span class="number">180</span>, app_func=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.new_impl:</span><br><span class="line">            self.handle_new_func(params,app_func)</span><br><span class="line">        self.app_queue_req.put(params)</span><br><span class="line">        <span class="keyword">if</span> self.app_queue_res:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                res = self.app_queue_res.get(timeout=timeout)</span><br><span class="line">                self.app_queue_res.task_done()</span><br><span class="line">                <span class="keyword">if</span> res:</span><br><span class="line">                    <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_req_and_receive_res</span><span class="params">(self, params=&#123;&#125;, timeout=<span class="number">180</span>)</span>:</span></span><br><span class="line">        self.sendReqAndReceiveRes(params,timeout)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 等待请求执行完毕</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">waitReqComplete</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.app_queue_req.join()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wait_req_complete</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.waitReqComplete()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 缓存返回结果</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cache_result_done_func</span><span class="params">(self, result:dict)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.result_max_cache_size &lt; len(self.result_cache_id_list):</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(self.result_cache_id_list)-self.result_max_cache_size):</span><br><span class="line">                result_cache_key = self.result_cache_id_list.pop()</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">del</span> self.result_cache_dct[result_cache_key]</span><br><span class="line">                <span class="keyword">except</span> Exception:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">for</span> k, v <span class="keyword">in</span> result.items():</span><br><span class="line">                self.result_cache_id_list.append(k)</span><br><span class="line">                self.result_cache_dct[k] = v</span><br><span class="line">            <span class="comment">#self.log.info(f'result_cache_id_list ==&gt; &#123;self.result_cache_id_list&#125;')</span></span><br><span class="line">            <span class="comment">#self.log.info(f'result_cache_dct ==&gt; &#123;self.result_cache_dct&#125;')</span></span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取返回值实现方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_cache_result_func</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        res = <span class="keyword">None</span></span><br><span class="line">        key_ = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.result_cache_dct:</span><br><span class="line">            res = self.result_cache_dct[key]</span><br><span class="line">            <span class="keyword">del</span> self.result_cache_dct[key]</span><br><span class="line">            key_ = key</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                self.result_cache_id_list.remove(key)</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">return</span> res, key_</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取返回值</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_cache_result</span><span class="params">(self, key, wait_req_done=False)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            res = self.get_cache_result_func(key)</span><br><span class="line">            <span class="keyword">if</span> res[<span class="number">1</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">return</span> res[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> wait_req_done:</span><br><span class="line">                self.app_queue_req.join()</span><br><span class="line">            <span class="keyword">while</span> <span class="keyword">not</span> self.app_queue_res.empty():</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    data = self.app_queue_res.get_nowait()</span><br><span class="line">                    self.app_queue_res.task_done()</span><br><span class="line">                    self.cache_result_done_func(data)</span><br><span class="line">                <span class="keyword">except</span> Exception:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCacheResult</span><span class="params">(self, key, waitReqDone=False)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.get_cache_result(key,waitReqDone)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 批量获取返回值</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">batch_get_cache_result</span><span class="params">(self, keys:list, wait_req_done=False)</span>:</span></span><br><span class="line">        result_arr = []</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span><br><span class="line">            res = self.get_cache_result(key,wait_req_done)</span><br><span class="line">            result_arr.append(res)</span><br><span class="line">        <span class="keyword">return</span> result_arr</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">batchGetCacheResult</span><span class="params">(self, keys:list, waitReqDone=False)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.batch_get_cache_result(keys,waitReqDone)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取返回值无key</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_cache_result_no_key</span><span class="params">(self, wait_req_done=False)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">if</span> wait_req_done:</span><br><span class="line">                self.app_queue_req.join()</span><br><span class="line">                result_arr = []</span><br><span class="line">            <span class="keyword">while</span> <span class="keyword">not</span> self.app_queue_res.empty():</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    data:dict = self.app_queue_res.get_nowait()</span><br><span class="line">                    self.app_queue_res.task_done()</span><br><span class="line">                    <span class="keyword">for</span> k, v <span class="keyword">in</span> data.items():</span><br><span class="line">                        <span class="keyword">if</span> wait_req_done:</span><br><span class="line">                            result_arr.append(v)</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            <span class="keyword">return</span> v</span><br><span class="line">                <span class="keyword">except</span> Exception:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">if</span> wait_req_done:</span><br><span class="line">                <span class="keyword">return</span> result_arr</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCacheResultNoKey</span><span class="params">(self, waitReqDone=False)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.get_cache_result_no_key(waitReqDone)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendReq</span><span class="params">(self, params=&#123;&#125;, app_func=None)</span>:</span></span><br><span class="line">        app_req_id = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> self.new_impl:</span><br><span class="line">            app_req_id = self.handle_new_func(params,app_func)</span><br><span class="line">        self.app_queue_req.put(params)</span><br><span class="line">        <span class="keyword">return</span> app_req_id</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_req</span><span class="params">(self, params=&#123;&#125;, app_func=None)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.sendReq(params,app_func)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 批量发送请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendReqArr</span><span class="params">(self, paramsArr=[])</span>:</span></span><br><span class="line">        app_req_id_arr = []</span><br><span class="line">        <span class="keyword">for</span> params <span class="keyword">in</span> paramsArr:</span><br><span class="line">            app_req_id = self.sendReq(params)</span><br><span class="line">            app_req_id_arr.append(app_req_id)</span><br><span class="line">        <span class="keyword">return</span> app_req_id_arr</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_req_arr</span><span class="params">(self, paramsArr=[])</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.sendReqArr(paramsArr)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 清空请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clearReq</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.app_queue_req.empty():</span><br><span class="line">            self.app_queue_req.get()</span><br><span class="line">            self.app_queue_req.task_done()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear_req</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.clearReq()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 清空请求与响应</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clearReqAndRes</span><span class="params">(self)</span>:</span></span><br><span class="line">        f1 = self.clearReq()</span><br><span class="line">        f2 = self.clearRes()</span><br><span class="line">        <span class="keyword">return</span> f1 <span class="keyword">and</span> f2</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear_req_and_res</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.clearReqAndRes()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 返回请求队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reqQueueIsEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.app_queue_req.empty()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">req_queue_is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.reqQueueIsEmpty()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 返回响应队列是否为空</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">resQueueIsEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.app_queue_res.empty()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">res_queue_is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.resQueueIsEmpty()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 接收请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">receiveRes</span><span class="params">(self, allFlag=False)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> allFlag:</span><br><span class="line">            self.waitReqComplete()</span><br><span class="line">            data_arr = []</span><br><span class="line">            <span class="keyword">if</span> self.app_queue_res:</span><br><span class="line">                <span class="keyword">while</span> <span class="keyword">not</span> self.app_queue_res.empty():</span><br><span class="line">                    data = self.app_queue_res.get()</span><br><span class="line">                    self.app_queue_res.task_done()</span><br><span class="line">                    data_arr.append(data)</span><br><span class="line">            <span class="keyword">return</span> data_arr</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            data = &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> self.app_queue_res:</span><br><span class="line">                data = self.app_queue_res.get()</span><br><span class="line">                self.app_queue_res.task_done()</span><br><span class="line">            <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">receive_res</span><span class="params">(self, all_flag=False)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.receiveRes(all_flag)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 清空结果</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clearRes</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.app_queue_res.empty():</span><br><span class="line">            self.app_queue_res.get()</span><br><span class="line">            self.app_queue_res.task_done()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear_res</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.clearRes()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendReqNoResult</span><span class="params">(self, params=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.app_queue_req.qsize() &lt; self.pool_count:</span><br><span class="line">            self.app_queue_req.put(params)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.app_queue_req.join()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_req_no_result</span><span class="params">(self, params=&#123;&#125;)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.sendReqNoResult(params)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendReqGetResult</span><span class="params">(self, params=&#123;&#125;, results : list = [], timeout=None)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.app_queue_res:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.app_queue_req.qsize() &gt;= self.pool_count:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(self.pool_count):</span><br><span class="line">                <span class="keyword">if</span> self.app_queue_req.empty() <span class="keyword">and</span> self.app_queue_res.empty():</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                res = self.app_queue_res.get(timeout=timeout)</span><br><span class="line">                self.app_queue_res.task_done()</span><br><span class="line">                results.append(res)</span><br><span class="line">        </span><br><span class="line">        self.app_queue_req.put(params)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">send_req_get_result</span><span class="params">(self, params=&#123;&#125;, results : list = [], timeout=None)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.sendReqGetResult(params, results, timeout)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self,exc_type,exc_val,exc_tb)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> exc_type <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                self.log.info(<span class="string">'exception_type: &#123;&#125;'</span>.format(exc_type))</span><br><span class="line">                self.log.info(<span class="string">'exception_val: &#123;&#125;'</span>.format(exc_val))</span><br><span class="line">                self.log.info(<span class="string">'exception_tb: &#123;&#125;'</span>.format(exc_tb))</span><br><span class="line">                self.close(forceFlag=<span class="keyword">True</span>)</span><br><span class="line">                <span class="keyword">raise</span> exc_val</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            printErrorLog(e,self.log)</span><br><span class="line">            <span class="keyword">raise</span> e</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            self.close()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MultiProcessTaskFunc</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, log=None, app_name=None, app_event=None, app_queue_req=None, app_queue_res=None, \</span></span></span><br><span class="line"><span class="function"><span class="params">        app_queue_res_count=None, app_func=None, show_log_flag=True, app_exec_timeout=None)</span>:</span></span><br><span class="line">        <span class="comment"># 定义日志</span></span><br><span class="line">        self.log : logging = log</span><br><span class="line">        <span class="comment"># 停止打印日志</span></span><br><span class="line">        self.show_log_flag : bool = show_log_flag</span><br><span class="line">        <span class="comment"># 定义应用名字</span></span><br><span class="line">        self.app_name : str = app_name</span><br><span class="line">        <span class="comment"># 定义事件 用于通知关闭程序</span></span><br><span class="line">        self.app_event : Event = app_event</span><br><span class="line">        <span class="comment"># 定义请求队列</span></span><br><span class="line">        self.app_queue_req : Queue = app_queue_req</span><br><span class="line">        <span class="comment"># 定义响应队列</span></span><br><span class="line">        self.app_queue_res : Queue = app_queue_res</span><br><span class="line">        <span class="comment"># 结果存取次数</span></span><br><span class="line">        self.app_queue_res_count : int = app_queue_res_count</span><br><span class="line">        self.app_func = app_func</span><br><span class="line">        <span class="comment"># 超时时间 默认永久</span></span><br><span class="line">        self.app_exec_timeout = app_exec_timeout</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义异步错误信息</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">err_callback</span><span class="params">(self, err: Exception, app_name=<span class="string">''</span>)</span>:</span></span><br><span class="line">        self.log.error(<span class="string">f'<span class="subst">&#123;app_name&#125;</span> app_func error &gt; <span class="subst">&#123;err&#125;</span>'</span>)</span><br><span class="line">        printErrorLog(err, self.log.error)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义执行方法并且设定超时时长</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_exec_app_func_old</span><span class="params">(self, app_req, task_index)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.app_exec_timeout:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                pool: ThreadPool = mp_dummy.Pool(<span class="number">1</span>)</span><br><span class="line">                future = pool.apply_async(self.app_func,[app_req])</span><br><span class="line">                <span class="keyword">return</span> future.get(self.app_exec_timeout)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                self.err_callback(e,<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span>'</span>)</span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                pool.close()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                <span class="keyword">return</span> self.app_func(app_req)</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                self.err_callback(e,<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span>'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 执行方法实现</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_method_old</span><span class="params">(self)</span>:</span></span><br><span class="line">        task_index = <span class="string">f'<span class="subst">&#123;int(time.time())&#125;</span><span class="subst">&#123;random.randint(<span class="number">100</span>,<span class="number">999</span>)&#125;</span>'</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.show_log_flag:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span> start...'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.app_event.is_set():</span><br><span class="line">            req = self.app_queue_req.get()</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> req:</span><br><span class="line">                self.app_queue_req.task_done()</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            res = self.handle_exec_app_func_old(req, task_index)</span><br><span class="line">            self.app_queue_req.task_done()</span><br><span class="line">            <span class="keyword">if</span> self.app_queue_res:</span><br><span class="line">                <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.app_queue_res_count):</span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        self.app_queue_res.put(res)</span><br><span class="line">                    <span class="keyword">except</span>:</span><br><span class="line">                        <span class="keyword">pass</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.show_log_flag:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span> end...'</span>)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义执行方法并且设定超时时长</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_exec_app_func</span><span class="params">(self, app_req, task_index)</span>:</span></span><br><span class="line">        app_func = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'_app_func'</span> <span class="keyword">in</span> app_req:</span><br><span class="line">            app_func = app_req[<span class="string">'_app_func'</span>]</span><br><span class="line">            <span class="keyword">del</span> app_req[<span class="string">'_app_func'</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            app_func = self.app_func</span><br><span class="line">        app_req_id = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'_app_req_id'</span> <span class="keyword">in</span> app_req:</span><br><span class="line">            app_req_id = app_req[<span class="string">'_app_req_id'</span>]</span><br><span class="line">            <span class="keyword">del</span> app_req[<span class="string">'_app_req_id'</span>]</span><br><span class="line">        <span class="keyword">if</span> self.app_exec_timeout:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                pool: ThreadPool = mp_dummy.Pool(<span class="number">1</span>)</span><br><span class="line">                future = pool.apply_async(app_func,kwds=app_req)</span><br><span class="line">                res = future.get(self.app_exec_timeout)</span><br><span class="line">                <span class="keyword">if</span> app_req_id:</span><br><span class="line">                    <span class="keyword">return</span> &#123;app_req_id:res&#125;</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                self.err_callback(e,<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span>'</span>)</span><br><span class="line">            <span class="keyword">finally</span>:</span><br><span class="line">                pool.close()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                res = app_func(**app_req)</span><br><span class="line">                <span class="keyword">if</span> app_req_id:</span><br><span class="line">                    <span class="keyword">return</span> &#123;app_req_id:res&#125;</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                self.err_callback(e,<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span>'</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 执行方法实现</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_method</span><span class="params">(self)</span>:</span></span><br><span class="line">        task_index = <span class="string">f'<span class="subst">&#123;int(time.time())&#125;</span><span class="subst">&#123;random.randint(<span class="number">100</span>,<span class="number">999</span>)&#125;</span>'</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.show_log_flag:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span> start...'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> self.app_event.is_set():</span><br><span class="line">            req = self.app_queue_req.get()</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> req:</span><br><span class="line">                self.app_queue_req.task_done()</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            res = self.handle_exec_app_func(req, task_index)</span><br><span class="line">            self.app_queue_req.task_done()</span><br><span class="line">            <span class="keyword">if</span> self.app_queue_res:</span><br><span class="line">                <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.app_queue_res_count):</span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        self.app_queue_res.put(res)</span><br><span class="line">                    <span class="keyword">except</span>:</span><br><span class="line">                        <span class="keyword">pass</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.show_log_flag:</span><br><span class="line">            self.log.info(<span class="string">f'<span class="subst">&#123;self.app_name&#125;</span>_<span class="subst">&#123;task_index&#125;</span> end...'</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/01/04/python操作mysql/" rel="next" title="python操作mysql">
+                <i class="fa fa-chevron-left"></i> python操作mysql
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2025/01/01/python中的pythonpath/" rel="prev" title="python中的pythonpath">
+                python中的pythonpath <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/bad-apple.gif" alt="Yly">
+            
+              <p class="site-author-name" itemprop="name">Yly</p>
+              <p class="site-description motion-element" itemprop="description">Just do it!</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整理两个Python工具"><span class="nav-number">1.</span> <span class="nav-text">整理两个Python工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Log封装工具"><span class="nav-number">1.1.</span> <span class="nav-text">Log封装工具</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      
+	  <div class="footer-inner">
+	  <div class="foot-image"></div>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yly</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+<br>
+<span id="sitetime"></span>
+<script type="text/javascript" src="/js/src/sitetime.js"></script>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script>
+  
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script src="//cdn.jsdelivr.net/npm/fancybox@3.0.0/dist/js/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 页面的爆炸效果 -->
+  
+   <!--崩溃欺骗-->
+   <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+   
+</body>
+</html>
